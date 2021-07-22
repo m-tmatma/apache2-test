@@ -9,4 +9,10 @@ USER=$1
 PASS=$2
 REALM=realm
 
-(echo -n "$USER:$REALM:" && echo -n "$USER:$REALM:password" | md5sum - | cut -d' ' -f1)
+PASSWD_FILE=$PWD/conf/passwordfile
+
+echo "created: $PASSWD_FILE"
+(echo -n "$USER:$REALM:" && echo -n "$USER:$REALM:password" | md5sum - | cut -d' ' -f1) >> $PASSWD_FILE
+
+cat $PASSWD_FILE | sort | uniq > $PASSWD_FILE.tmp
+mv $PASSWD_FILE.tmp $PASSWD_FILE
