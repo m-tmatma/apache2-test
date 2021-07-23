@@ -16,3 +16,4 @@ echo "created: $PASSWD_FILE"
 
 cat $PASSWD_FILE | sort | uniq > $PASSWD_FILE.tmp
 mv $PASSWD_FILE.tmp $PASSWD_FILE
+cat $PASSWD_FILE
